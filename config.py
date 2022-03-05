@@ -10,7 +10,7 @@ class TestConfig(Config):
     pass
 
 class DevConfig(Config):
-    pass
+    DEBUG = True
 
 config_options = {
     'development' :DevConfig,
