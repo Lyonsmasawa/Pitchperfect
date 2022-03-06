@@ -1,26 +1,27 @@
-from imghdr import tests
-from re import S
 from app import create_app, db
 from flask_script import Manager, Server
 from flask_migrate import Migrate, MigrateCommand
 
-#calls the create app function with the config so as to create the app instance
+from app.models import User
+
 app = create_app('development')
+app = create_app('tests')
 
-#instantiate manager class
 manager = Manager(app)
-#this command launches our server
-manager.add_command('server', Server) 
-
-migrate = Migrate(app, db)
-manager.add_command('db', MigrateCommand)
-
-@manager.command #create new command
+manager.add_command('server',Server)
+@manager.command
 def test():
+    """Run the unit tests."""
     import unittest
-    tests = unittest.TestLoader.discover('tests')
+    tests = unittest.TestLoader().discover('tests')
     unittest.TextTestRunner(verbosity=2).run(tests)
+
+@manager.shell
+def make_shell_context(): #creates shell context
+    return dict(app = app, db = db, User = User) #return the instance of each of these
+
+migrate = Migrate(app,db)
+manager.add_command('db',MigrateCommand)
 
 if __name__ == '__main__':
     manager.run()
-
