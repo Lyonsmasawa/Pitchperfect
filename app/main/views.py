@@ -8,3 +8,7 @@ def index():
 @main.route('/what')
 def what():
     return render_template('what.html')
+
+@main.route('/wise')
+def wise():
+    return render_template('wise.html')
