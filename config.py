@@ -1,5 +1,5 @@
 class Config:
-    pass
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:passdb@localhost/pitches'
 
 class ProductionConfig(Config):
     pass
