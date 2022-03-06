@@ -1,11 +1,9 @@
-from distutils import extension
-from distutils.command.config import config
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy 
 from config import config_options
 
 #create instance
-db = SQLAlchemy
+db = SQLAlchemy()
 
 def create_app(config_name):
 

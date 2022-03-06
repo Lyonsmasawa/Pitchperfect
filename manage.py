@@ -12,7 +12,7 @@ manager = Manager(app)
 #this command launches our server
 manager.add_command('server', Server) 
 
-migrate =Migrate(app, db)
+migrate = Migrate(app, db)
 manager.add_command('db', MigrateCommand)
 
 @manager.command #create new command
