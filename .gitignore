@@ -1,4 +1,4 @@
 env/
 start.sh
 *.pyc 
-.gitignore
+*.gitignore
