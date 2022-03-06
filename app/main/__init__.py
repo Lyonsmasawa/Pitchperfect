@@ -1,2 +1,2 @@
 from flask import Blueprint
-main = Blueprint('main', __name__)
+main = Blueprint('main', __name__) 
