@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% extends 'macros.html' as macro%}
 
 {% block title %}
 Pitch-Perfect
@@ -8,5 +9,10 @@ Pitch-Perfect
 <div class="container">
     <h1 class="text-center">All Pitches</h1>
     <hr>
+    <div class="row">
+        <div class="col-md-3">
+            {{ macro.displayPitches(pitches) }}
+        </div>
+    </div>
 </div>
 {% endblock main %}
