@@ -1,0 +1,36 @@
+{% macro displayPitches(pitches) %}
+
+
+{% for pitch in pitches %}
+
+
+<div class="card">
+    <div class="card-header">
+        {% if pitch.user.profile_pic_path %}
+        <img src="{{url_for('static', filename=pitch.user.profile_pic_path)}}" alt="">
+        {% else %}
+        <img src="{{url_for('static', filename='img/default.jpg')}}" alt="">
+        {% endif %}
+        <strong>
+            <h4>{{pitch.user.name}}</h4>
+        </strong>
+        <em>{{pitch.posted.strftime("%d %b %Y")}}</em>
+        <br>
+    </div>
+    <div class="card-body">
+        <strong>{{pitch.title}}</strong>
+        <br>
+        <p>{{pitch.content}}</p>
+        <br>
+        <a href="{{url_for(main.pitch, id = pitch_id)}}">View Pitch</a>
+    </div>
+    <div class="">
+        <a href="{{url_for(main.upvote, id = pitch_id)}}">UpVote <span>{{pitch.upvote.count()}}</span></a>
+        <a href="{{url_for(main.downvote, id = pitch_id)}}">DownVote <span>{{pitch.downvote.count()}}</span></a>
+    </div>
+</div>
+
+
+{% endfor %}
+
+{% endmacro %}
