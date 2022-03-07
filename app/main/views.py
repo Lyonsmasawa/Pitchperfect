@@ -1,9 +1,8 @@
 from flask import render_template, request, redirect, url_for, abort #takes in the name of a template file as an argument and automatically searches for the template file
 #in our app/templates/subdirectory and loads it
 from .forms import UpdateProfile
-from flask import render_template, request, redirect, url_for
 from . import main
-from ..models import Review, User
+from ..models import User
 from flask_login import login_required, current_user #will intercept a request and check if user is authenticated and if not the user is directed to the login page
 from .. import db, photos
 import markdown2
