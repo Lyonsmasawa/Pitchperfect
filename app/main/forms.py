@@ -3,8 +3,7 @@ from wtforms import StringField,TextAreaField,SubmitField #allows us to create a
 from wtforms.validators import InputRequired #prevents user from submittin empty value
 
 class CommentInput(FlaskForm):
-    title = StringField('Review title', validators=[InputRequired()]) #first is the label, second is a list of validators
-    review = TextAreaField('Movie Review')
+    comment = TextAreaField('Add Comment here . . .', validators=[InputRequired()]) #first is the label, second is a list of validators
     Submit= SubmitField('Submit')
 
 class CategoryInput(FlaskForm):
