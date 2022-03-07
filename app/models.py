@@ -36,24 +36,6 @@ class Review(db.Model):
     def get_reviews(cls,id):
         reviews = Review.query.filter_by(movie_id=id).all()
         return reviews
-    # def save_review(self):
-    #     Review.all_reviews.append(self)
-
-
-    # @classmethod
-    # def clear_reviews(cls):
-    #     Review.all_reviews.clear()
-
-    # @classmethod
-    # def get_reviews(cls,id):
-
-    #     response = []
-
-    #     for review in cls.all_reviews:
-    #         if review.movie_id == id:
-    #             response.append(review)
-
-    #     return response
 
 class User(UserMixin, db.Model): #arg helps connect  to db
     __tablename__ = 'users' #table name
@@ -80,18 +62,6 @@ class User(UserMixin, db.Model): #arg helps connect  to db
     def __repr__(self):
         return f'User {self.username}'
 
-class Role(db.Model):
-    __tablename__ = 'roles'
-    
-    id = db.Column(db.Integer, primary_key = True)
-    name = db.Column(db.String(255))
-    users = db.relationship('User', backref = 'role', lazy="dynamic")
-    """
-    the db.relationship creates a virtual column
-    """
-
-    def __repr__(self):
-        return f'Role {self.name}'
 
 @login_manager.user_loader
 def load_user(user_id):
