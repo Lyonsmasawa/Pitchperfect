@@ -1,3 +1,5 @@
+import os
+
 class Config:
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:passdb@localhost/pitches'
     SECRET_KEY = os.environ.get('SECRET_KEY')
@@ -16,6 +18,7 @@ class ProductionConfig(Config):
 
 class DevelopmentConfig(Config):
     DEBUG = True
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:passdb@localhost/pitches'
 
 class TestConfig(Config):
     pass
