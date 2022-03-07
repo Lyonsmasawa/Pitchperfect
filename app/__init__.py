@@ -1,29 +1,38 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy 
 from config import config_options
+from flask_bootstrap import Bootstrap
+from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+from flask_uploads import UploadSet, configure_uploads, IMAGES
+from flask_mail import Mail
+from flask_simplemde import SimpleMDE
 
-#create instance
+bootstrap = Bootstrap()
 db = SQLAlchemy()
-login_manager = LoginManager()
-login_manager.session_protection = 'strong'
-login_manager.login_view = 'auth.login'
+mail = Mail()
+simple = SimpleMDE()
+photos = UploadSet('photos', IMAGES) #UPLOAD SET DEFINES WHAT WE ARE UPLOADING, we pass in a name and the type of file we want to upload which is an image
+login_manager = LoginManager() #create an instance 
+login_manager.session_protection = 'strong' #provides diff security levels and by using strong it will minitor changes in the user header and log the user out
+login_manager.login_view = 'auth_login' #add the blueprint name as the login endpoint as it is located inside a blueprint
 
 def create_app(config_name):
-
-    #create app instance
     app = Flask(__name__)
-
-    #configuration
+    
     app.config.from_object(config_options[config_name])
 
-    #blueprints
+    configure_uploads(app, photos)
+
+    bootstrap.init_app(app)
+    db.init_app(app)
+    mail.init_app(app)
+    login_manager.init_app(app)
+    simple.init_app(app)
+
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
+
     from .auth import auth as auth_blueprint
     app.register_blueprint(auth_blueprint, url_prefix = '/authenticate')
-
-    #initialize extensions
-    db.init_app(app)
 
     return app
