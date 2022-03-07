@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% imports 'macros.html' as macro%}
+
+
+{% block main %}
+    <div class="row">
+        <h1>{{category}}</h1>
+        {{macro.display(pitches)}}
+    </div>
+{% endblock main %}
+    
