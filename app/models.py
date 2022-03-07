@@ -14,9 +14,9 @@ class Pitch(db.Model):
     posted = db.Column(db.DateTime, index = True, default=datetime.utcnow)
     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
     category_id = db.Column(db.Integer, db.ForeignKey('categories.id')) #tels alchemy foreign key and is the primary key of roles
-    up_vote = db.relationship('UpVote',backref = 'pitch',lazy = "dynamic")
-    comment = db.relationship('Comments',backref = 'pitch',lazy = "dynamic")
-    down_vote = db.relationship('DownVote',backref = 'pitch',lazy = "dynamic")
+    up_vote = db.relationship('UpVote',backref = 'upvote',lazy = "dynamic")
+    comment = db.relationship('Comments',backref = 'comment',lazy = "dynamic")
+    down_vote = db.relationship('DownVote',backref = 'downvote',lazy = "dynamic")
 
     def save_pitch(self):
         db.session.add(self)
@@ -64,8 +64,8 @@ class Category(db.Model):
     __tablename__ = 'categories'
 
     id = db.Column(db.Integer,primary_key = True)
-    category = db.Column(db.String(255), unique=True)
-    pitch = db.Column('Pitch', backref = 'category', lazy='dynamic')
+    name = db.Column(db.String(255), unique=True)
+    pitch = db.relationship('Pitch',backref = 'category',lazy = "dynamic")
 
     def save_category(self):
         db.session.add(self)
