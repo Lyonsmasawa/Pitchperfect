@@ -16,7 +16,7 @@
 <div class="row">
 
     {% for comment in comments %}
-    <div class="col-md-3 m-lg-1">
+    <div class="col-md-3 m-lg-2">
         Posted on: {{comment.posted.strftime("%d %b %Y")}}
         <div class="card">
             {{comment.comment}}
@@ -24,11 +24,11 @@
         <br>
         {% endfor %}
     </div>
+</div>
+<div class="row m-lg-4">
+    <div class="col-md-6">
+        {{wtf.quick_form(form)}}
 
-    <div class="row m-lg-4">
-        <div class="col-md-6">
-            {{wtf.quick_form(form)}}
-
-        </div>
     </div>
-    {% endblock main %}
+</div>
+{% endblock main %}
