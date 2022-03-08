@@ -17,9 +17,9 @@
     <h1><strong>Comments</strong></h1>
 
     {% for comment in comments %}
-    <div class="col-md-3 m-auto">
+    <div class="col-md-3 m-lg-1">
         Posted on:{{comment.posted.strftime("%d %b %Y")}}
-        <div class="card table-dark m-auto">
+        <div class="card m-auto">
             {{comment.comment}}
         </div>
         <br>
