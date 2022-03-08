@@ -4,10 +4,10 @@
 {% for pitch in pitches %}
 
 <div class="col-md-3">
-    <div class="card text-justify p-2 h-100">
+    <div class="card text-justify p-2 h-100 m-auto">
         <div class="">
             <strong>
-                <h4 class="card text-white bg-black p-1 w-auto">{{pitch.user.username}}</h4>
+                <h4 class="card text-white bg-black p-1">{{pitch.user.username}}</h4>
             </strong>
             <em class="text-center p-0.2"> date posted: {{pitch.posted.strftime("%d %b %Y")}}</em>
             <br>
