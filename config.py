@@ -14,10 +14,10 @@ class Config:
     SIMPLEMDE_USE_CDN = True
 
 
-class ProductionConfig(Config):
+class ProdConfig(Config):
     SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
 
-class DevelopmentConfig(Config):
+class DevConfig(Config):
     DEBUG = True
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:passdb@localhost/pitches-test'
 
@@ -25,7 +25,7 @@ class TestConfig(Config):
     pass
 
 config_options = {
-    'production': ProductionConfig,
-    'development': DevelopmentConfig,
+    'production': ProdConfig,
+    'development': DevConfig,
     'tests': TestConfig
 }
