@@ -3,8 +3,8 @@
 
 {% for pitch in pitches %}
 
-<div class="col-md-3">
-    <div class="card text-justify p-2">
+<div class="col-md-">
+    <div class="card text-justify p-2 h-100">
         <div class="">
             <strong>
                 <h4>{{pitch.user.name}}</h4>
@@ -26,8 +26,8 @@
                 <span><strong>{{pitch.down_vote.count()}}</strong></span></a>
         </div>
     </div>
-    <br>
 </div>
+<br>
 
 {% endfor %}
 
