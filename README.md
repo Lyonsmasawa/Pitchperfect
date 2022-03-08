@@ -9,7 +9,7 @@ This is a flask application that allows the user to post and view other peoples 
 ### Profile
 <img src="peek.png">
 
-### Home Page
+### Page
 <img src="peek2.png">
 
 
