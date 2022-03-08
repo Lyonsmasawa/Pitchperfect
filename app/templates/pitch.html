@@ -14,16 +14,16 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-3 m-lg-1">
-        {% for comment in comments %}
-        Posted on: {{comment.posted.strftime("%d %b %Y")}}
-        <div class="card">
-            {{comment.comment}}
-        </div>
-        <br>
-        {% endfor %}
 
+    {% for comment in comments %}
+    <div class="col-md-3 m-lg-1"></div>
+    Posted on: {{comment.posted.strftime("%d %b %Y")}}
+    <div class="card">
+        {{comment.comment}}
     </div>
+    <br>
+</div>
+{% endfor %}
 </div>
 <div class="row m-lg-4">
     <div class="col-md-6">
