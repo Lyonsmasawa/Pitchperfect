@@ -1,3 +1,4 @@
+from os import stat
 from . import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
@@ -9,14 +10,14 @@ class Pitch(db.Model):
     __tablename__ = 'pitches'
 
     id = db.Column(db.Integer,primary_key = True)
-    title = db.Column(db.Integer)
+    title = db.Column(db.String)
     content = db.Column(db.String)
     posted = db.Column(db.DateTime, index = True, default=datetime.utcnow)
     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
     category_id = db.Column(db.Integer, db.ForeignKey('categories.id')) #tels alchemy foreign key and is the primary key of roles
-    up_vote = db.relationship('UpVote',backref = 'upvote',lazy = "dynamic")
-    comment = db.relationship('Comments',backref = 'comment',lazy = "dynamic")
-    down_vote = db.relationship('DownVote',backref = 'downvote',lazy = "dynamic")
+    up_vote = db.relationship('UpVote',backref = 'post',lazy = "dynamic")
+    comment = db.relationship('Comments',backref = 'post',lazy = "dynamic")
+    down_vote = db.relationship('DownVote',backref = 'post',lazy = "dynamic")
 
     def save_pitch(self):
         db.session.add(self)
@@ -70,6 +71,10 @@ class Category(db.Model):
     def save_category(self):
         db.session.add(self)
         db.session.commit()
+    
+    @staticmethod
+    def get_categories():
+        return Category.query.all()
 
     def __repr__(self):
         return f'User {self.category}'
@@ -78,7 +83,7 @@ class Comments(db.Model):
     __tablename__ = 'comments'
 
     id = db.Column(db.Integer,primary_key = True)
-    comment = db.Column(db.Integer)
+    comment = db.Column(db.String)
     posted = db.Column(db.DateTime, index = True, default=datetime.utcnow)
     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
     pitch_id = db.Column(db.Integer, db.ForeignKey('pitches.id')) #tels alchemy foreign key and is the primary key of roles
