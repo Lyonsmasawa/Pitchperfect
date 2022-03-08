@@ -20,7 +20,7 @@
     <div class="col-md-3 m-auto h-100">
         Posted on:{{comment.posted.strftime("%d %b %Y")}}
         <div class="card m-auto p-2">
-            <div class="card-title text-white bg-black p-0.4">{{pitch.user.username}}</div>
+            <div class="card-title text-white bg-black p-0.4">{{comment.user_id.username}}</div>
             <hr>
             {{comment.comment}}
         </div>
