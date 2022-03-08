@@ -12,11 +12,9 @@ class Config:
     # simple mde  configurations im
     SIMPLEMDE_JS_IIFE = True
     SIMPLEMDE_USE_CDN = True
-    DEBUG = True
 
 
 class ProductionConfig(Config):
-    DEBUG=True
     SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
 
 class DevelopmentConfig(Config):
