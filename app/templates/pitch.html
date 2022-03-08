@@ -19,7 +19,7 @@
     {% for comment in comments %}
     <div class="col-md-3 m-auto">
         Posted on:{{comment.posted.strftime("%d %b %Y")}}
-        <div class="card m-auto">
+        <div class="card table-dark m-auto">
             {{comment.comment}}
         </div>
         <br>
