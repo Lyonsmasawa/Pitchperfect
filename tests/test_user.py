@@ -7,7 +7,7 @@ class UserModelTest(unittest.TestCase):
         self.new_user = User(password = 'banana')
 
     def test_password_setter(self): 
-        self.assertTrue(self.new_user.pass_hash is not None) #ascertains that when password is being hashed and the pass_secure has a value
+        self.assertTrue(self.new_user.pass_secure is not None) #ascertains that when password is being hashed and the pass_secure has a value
 
     def test_no_access_password(self): #confirms our application raises an error when we try to access the password
         with self.assertRaises(AttributeError):
