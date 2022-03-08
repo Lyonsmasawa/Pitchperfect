@@ -60,7 +60,6 @@ def category():
 
 
 @main.route('/category/<int:category_id>', methods=['GET', 'POST'])
-@login_required
 def get_category(category_id):
     pitches = Pitch.query.filter_by(category_id=category_id).all()
     category = Category.query.get(category_id)
