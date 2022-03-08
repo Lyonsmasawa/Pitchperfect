@@ -1,5 +1,3 @@
-from distutils.debug import DEBUG
-from operator import truediv
 import os
 
 class Config:
@@ -14,7 +12,6 @@ class Config:
     # simple mde  configurations im
     SIMPLEMDE_JS_IIFE = True
     SIMPLEMDE_USE_CDN = True
-    DEBUG = True
 
 
 class ProductionConfig(Config):
