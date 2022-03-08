@@ -3,33 +3,36 @@
 
 {% for pitch in pitches %}
 
-
-<div class="card">
-    <div class="card-header">
-        {% if pitch.user.profile_pic_path %}
-        <img src="{{url_for('static', filename=pitch.user.profile_pic_path)}}" alt="">
-        {% else %}
-        <img src="{{url_for('static', filename='img/default.jpg')}}" alt="">
-        {% endif %}
-        <strong>
-            <h4>{{pitch.user.name}}</h4>
-        </strong>
-        <em>{{pitch.posted.strftime("%d %b %Y")}}</em>
-        <br>
+<div class="col-md-3">
+    <div class="card">
+        <div class="card-header">
+            {% if pitch.user.profile_pic_path %}
+            <img src="{{url_for('static', filename=pitch.user.profile_pic_path)}}" alt="">
+            {% else %}
+            <img src="{{url_for('static', filename='img/default.jpg')}}" alt="">
+            {% endif %}
+            <strong>
+                <h4>{{pitch.user.name}}</h4>
+            </strong>
+            <em>{{pitch.posted.strftime("%d %b %Y")}}</em>
+            <br>
+        </div>
+        <div class="card-body">
+            <strong>{{pitch.title}}</strong>
+            <br>
+                <p>{{pitch.content}}</p>
+                <br>
+                <a href="{{url_for('main.pitch', id = pitch.id)}}">View Pitch</a>
+        </div>
+        <div class="m-lg-auto">
+            <a href="{{url_for('main.upVote', id = pitch.id)}}"><i class="fas fa-arrow-alt-circle-up text-black"></i>
+                <span>{{pitch.up_vote.count()}}</span></a>
+            <a href="{{url_for('main.downVote', id = pitch.id)}}"> <i class="fas fa-arrow-alt-circle-down text-danger"></i>
+                <span><strong>{{pitch.down_vote.count()}}</strong></span></a>
+        </div>
     </div>
-    <div class="card-body">
-        <strong>{{pitch.title}}</strong>
-        <br>
-        <p>{{pitch.content}}</p>
-        <br>
-        <a href="{{url_for(main.pitch, id = pitch_id)}}">View Pitch</a>
-    </div>
-    <div class="">
-        <a href="{{url_for(main.upvote, id = pitch_id)}}">UpVote <span>{{pitch.upvote.count()}}</span></a>
-        <a href="{{url_for(main.downvote, id = pitch_id)}}">DownVote <span>{{pitch.downvote.count()}}</span></a>
-    </div>
+    <br>
 </div>
-
 
 {% endfor %}
 
