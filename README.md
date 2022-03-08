@@ -10,7 +10,7 @@ This is a flask application that allows the user to post and view other peoples 
 <img src="peek.png">
 
 ### Home Page
-<img src="peek.png">
+<img src="peek2.png">
 
 
 ## Setup Requirements
