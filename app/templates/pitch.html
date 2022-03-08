@@ -17,10 +17,10 @@
     <h1><strong>Comments</strong></h1>
 
     {% for comment in comments %}
-    <div class="col-md-3 m-auto">
+    <div class="col-md-3 m-auto h-100">
         Posted on:{{comment.posted.strftime("%d %b %Y")}}
-        <div class="card m-auto p-3">
-            <div class="card-title text-white bg-black">{{pitch.user.username}}</div>
+        <div class="card m-auto p-2">
+            <div class="card-title text-white bg-black p-0.4">{{pitch.user.username}}</div>
             <hr>
             {{comment.comment}}
         </div>
