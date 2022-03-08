@@ -15,7 +15,7 @@ simple = SimpleMDE()
 photos = UploadSet('photos', IMAGES) #UPLOAD SET DEFINES WHAT WE ARE UPLOADING, we pass in a name and the type of file we want to upload which is an image
 login_manager = LoginManager() #create an instance 
 login_manager.session_protection = 'strong' #provides diff security levels and by using strong it will minitor changes in the user header and log the user out
-login_manager.login_view = 'auth_login' #add the blueprint name as the login endpoint as it is located inside a blueprint
+login_manager.login_view = 'auth.login' #add the blueprint name as the login endpoint as it is located inside a blueprint
 
 def create_app(config_name):
     app = Flask(__name__)
