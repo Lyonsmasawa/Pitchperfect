@@ -3,7 +3,7 @@
 
 
 {% block main %}
-<div class="roW m-lg-5">
+<div class="row m-lg-5">
     <div class="col-md-3">
         <div class="card">
             <div class="card-header">{{pitch.title}}</div>
@@ -14,8 +14,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-3">
-
+    <div class="col-md-3 m-lg-1">
         {% for comment in comments %}
         Posted on: {{comment.posted.strftime("%d %b %Y")}}
         <div class="card">
