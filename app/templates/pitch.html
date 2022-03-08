@@ -15,17 +15,18 @@
 </div>
 <div class="row">
     <h1><strong>Comments</strong></h1>
-    <div class="col-md-3 m-auto">
 
-        {% for comment in comments %}
+    {% for comment in comments %}
+    <div class="col-md-3 m-auto">
         Posted on:{{comment.posted.strftime("%d %b %Y")}}
         <div class="card m-auto">
             {{comment.comment}}
         </div>
         <br>
-        {% endfor %}
 
     </div>
+    {% endfor %}
+
 </div>
 <div class="row m-lg-4">
     <div class="col-md-6">
