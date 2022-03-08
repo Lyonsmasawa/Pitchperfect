@@ -17,7 +17,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="m-auto">
-                                <label for="Category" class="mb-2">Category</label>
+                                <label for="Category" class="m-auto">Category</label>
                                 <select class="form-control" name="category_id" required>
                                     {% for category in categories %}
                                     <option value="{{ category.id }}">{{ category.name }}</option>
@@ -29,10 +29,10 @@
                     <div class="m-auto">
                         <br>
                         <label for="Content" class="m-auto">Pitch</label>
-                        <textarea class="form-control" name="body" rows="5" required></textarea>
+                        <textarea class="form-control" name="body" required></textarea>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-block">Save changes</button>
+                        <button type="submit" class="btn btn-block">Post Pitch</button>
                     </div>
                 </form>
             </div>

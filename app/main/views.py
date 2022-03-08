@@ -1,3 +1,4 @@
+from crypt import methods
 from flask import render_template, request, redirect, url_for, abort #takes in the name of a template file as an argument and automatically searches for the template file
 #in our app/templates/subdirectory and loads it
 from .forms import UpdateProfile
@@ -15,7 +16,7 @@ def index():
 
     return render_template('index.html', pitches = pitches)
 
-@main.route('/pitch/<int:id>')
+@main.route('/pitch/<int:id>', methods=['GET', 'POST'])
 @login_required
 def pitch(id):
     comments = Comments.query.filter_by(pitch_id = id).all()
@@ -24,13 +25,13 @@ def pitch(id):
         abort(404)
     form = CommentInput()
     if form.validate_on_submit():
-        comment = Comments(comment = form.comment.data, pitch_id = id, user_id=current_user)
+        comment = Comments(comment = form.comment.data, pitch_id = id, user_id=current_user.id)
         db.session.add(comment)
         db.session.commit()
-        form.body.data = ''
+        
         return redirect(url_for('.pitch',comments=comments, pitch = pitch, form=form, id=id ))
 
-    return render_template('pitch.html', pitch = pitch, form=form)
+    return render_template('pitch.html', pitch = pitch, form=form, comments = comments)
 
 @main.route('/add_pitch', methods=['GET', 'POST'])
 @login_required

@@ -4,17 +4,12 @@
 {% for pitch in pitches %}
 
 <div class="col-md-3">
-    <div class="card">
-        <div class="card-header">
-            {% if pitch.user.profile_pic_path %}
-            <img src="{{url_for('static', filename=pitch.user.profile_pic_path)}}" alt="">
-            {% else %}
-            <img src="{{url_for('static', filename='img/default.jpg')}}" alt="">
-            {% endif %}
+    <div class="card text-justify p-2">
+        <div class="">
             <strong>
                 <h4>{{pitch.user.name}}</h4>
             </strong>
-            <em>{{pitch.posted.strftime("%d %b %Y")}}</em>
+            <em class="text-center">{{pitch.posted.strftime("%d %b %Y")}}</em>
             <br>
         </div>
         <div class="card-body">
