@@ -4,7 +4,7 @@ import os
 class Config:
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:passdb@localhost/pitches'
     SECRET_KEY = os.environ.get('SECRET_KEY')
-    UPLOADED_PHOTOS_DEST = 'app/static/img'
+    UPLOADED_PHOTOS_DEST = 'app/static/photos'
     MAIL_SERVER = 'smtp.googlemail.com' #smtp server
     MAIL_PORT = 587 #gmail smtp server port
     MAIL_USE_TLS = True #enables a transport layer security to secure emails when sending
